@@ -1,0 +1,81 @@
+---
+title: '寻找两个正序数组的中位数'
+date: 2021-02-17 00:44:09
+tags: [leetcode算法]
+published: true
+hideInList: false
+feature: 
+isTop: false
+---
+### 题目描述
+给定两个大小为 `m` 和 `n` 的正序（从小到大）数组 `nums1` 和 `nums2`。
+
+请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为` O(log(m + n))`。
+
+你可以假设 `nums1` 和 `nums2` 不会同时为空。
+
+ 
+
+#### 示例1
+```
+nums1 = [1, 3]
+nums2 = [2]
+
+则中位数是 2.0
+```
+#### 示例 2
+```
+nums1 = [1, 2]
+nums2 = [3, 4]
+
+则中位数是 (2 + 3)/2 = 2.5
+```
+
+#### 题解
+
+##### 题解一：暴力解法
+###### 思路
+根据题目描述及示例我们可以知道，用 len 表示合并后数组的长度如果是奇数，我们需要知道第 `（len+1）/2` 个数就可以了，如果遍历的话需要遍历 `Math.floor(len/2 ) + 1` 次。如果是偶数，我们需要知道第 `len/2`和 `len/2+1` 个数的值，也是需要遍历 `len/2+1` 次。所以遍历的话，奇数和偶数都是 `len/2+1` 次。
+
+即：
+* 若`len%2===1`中位数就是位于合并后数组`Math.floor(len/2)+1`的数字。
+* 若`(m+n)%2===0`中位数就是位于合并后数组`len/2`和`len/2+1`的数字的平均数。
+所以我们需要做的就是排序就可以了,这里我们采用指针法排序这样最多只需要移动`len/2+1`就能获得答案。
+时间复杂度：遍历 `len/2+1` 次，`len=m+n`，所以时间复杂度是 `O(m+n)`。
+
+空间复杂度：我们申请了常数个变量，也就是`m`，`n`，`len`，`pointer1`，`pointer2`，`newVal`，`oldVal` 以及 `i`。
+
+总共 8 个变量，所以空间复杂度是 `O(1)`。
+
+但这并不符合题目中要求的时间复杂度`O(log(m + n))`
+###### 代码
+```
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var findMedianSortedArrays = function (nums1, nums2) {
+    let m = nums1.length
+    let n = nums2.length
+    let len = m + n
+    let pointer1 = 0, pointer2 = 0
+    let newVal, oldVal
+    for (let i = 0; i <= len / 2; i++) {
+        oldVal = newVal
+        if (pointer1 < m && (nums1[pointer1] <= nums2[pointer2] || pointer2 >= n)) {
+            newVal = nums1[pointer1++]
+        } else {
+            newVal = nums2[pointer2++]
+        }
+    }
+    if ((len % 2) === 0) {
+        return (newVal + oldVal) / 2
+    } else {
+        return newVal
+    }
+};
+```
+
+##### 题解二：二分法
+未完待续。。。

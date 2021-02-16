@@ -1,0 +1,91 @@
+---
+title: '无重复字符的最长字串'
+date: 2021-02-17 00:28:38
+tags: [leetcode算法]
+published: true
+hideInList: false
+feature: 
+isTop: false
+---
+### 题目描述
+给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+#### 示例1
+```
+输入: "abcabcbb"
+输出: 3 
+解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+```
+#### 示例2
+```
+输入: "bbbbb"
+输出: 1
+解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+```
+#### 示例 3
+```
+输入: "pwwkew"
+输出: 3
+解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+     请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+```
+
+### 题解
+
+#### 官方题解
+##### 思路
+![](https://panyu97py.github.io/post-images/1613493014542.png)
+如上图所示相当于左右两个指针对字符串各循环了一次
+##### 代码
+```
+var lengthOfLongestSubstring = function(s) {
+    // 哈希集合，记录每个字符是否出现过
+    const occ = new Set();
+    const n = s.length;
+    // 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动
+    let rk = -1, ans = 0;
+    for (let i = 0; i < n; ++i) {
+        if (i != 0) {
+            // 左指针向右移动一格，移除一个字符
+            occ.delete(s.charAt(i - 1));
+        }
+        while (rk + 1 < n && !occ.has(s.charAt(rk + 1))) {
+            // 不断地移动右指针
+            occ.add(s.charAt(rk + 1));
+            ++rk;
+        }
+        // 第 i 到 rk 个字符是一个极长的无重复字符子串
+        ans = Math.max(ans, rk - i + 1);
+    }
+    return ans;
+};
+```
+#### 我的题解
+##### 思路
+获取字符串长度，并循环。每次循环判断map中是否存在key为该字符的值若不存在，将字符作为key，字符所在的位置作为value存入map中，若存在，则获取key为该字符的值将该值与当前的start做比较取较大的值作为start。每次循环计算长度（end-start+1）并与已存在的长度比较取较大的值。
+
+![](https://panyu97py.github.io/post-images/1613493060500.png)
+
+##### 代码
+```
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function (s) {
+    let tempMap = new Map()
+    let start = 0
+    let length = 0
+    if(!s){
+      return 0
+    }
+    let len = s.length
+    for(let end = 0;end<len;end++){
+      if(tempMap.has(s.charAt(end))){
+        start =Math.max(start,tempMap.get(s.charAt(end))+1) 
+      }
+      tempMap.set(s.charAt(end),end)
+      length = Math.max(length,end-start+1)
+    }
+    return length
+};
+```

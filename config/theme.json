@@ -1,0 +1,34 @@
+{
+  "config": {
+    "archivesPageSize": 50,
+    "archivesPath": "archives",
+    "dateFormat": "YYYY-MM-DD",
+    "feedCount": 10,
+    "feedFullText": true,
+    "footerInfo": "Powered by <a href=\"https://github.com/getgridea/gridea\" target=\"_blank\">Gridea</a>",
+    "postPageSize": 10,
+    "postPath": "post",
+    "postUrlFormat": "SHORT_ID",
+    "showFeatureImage": true,
+    "siteDescription": "共同学习，共同进步",
+    "siteName": "LuYu's Blog",
+    "tagPath": "tag",
+    "tagUrlFormat": "SHORT_ID",
+    "themeName": "simple"
+  },
+  "customConfig": {
+    "contentBgColor": "#f8f9fa",
+    "customCss": "",
+    "facebook": "",
+    "featureBorderRadius": "3px",
+    "ga": "",
+    "github": "https://github.com/panyu97py",
+    "menuColor": "#dee2e6",
+    "renderCode": true,
+    "renderKaTeX": false,
+    "sidebarWidth": "320px",
+    "twitter": "",
+    "weibo": "",
+    "zhihu": ""
+  }
+}
