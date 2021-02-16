@@ -1,7 +1,7 @@
 ---
 title: '可视化拖拽组件库一些技术要点原理分析（一）'
 date: 2021-02-17 01:33:54
-tags: []
+tags: [vue]
 published: true
 hideInList: false
 feature: 
