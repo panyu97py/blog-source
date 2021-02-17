@@ -2,11 +2,11 @@
   "config": {
     "branch": "master",
     "cname": "blog.luyu.icu",
-    "domain": "https://panyu97py.github.io",
+    "domain": "https://blog.luyu.icu",
     "email": "panyupy@vip.qq.com",
     "platform": "github",
-    "repository": "blog",
-    "token": "fbae58db07327b6ad453995df6719304a368edbf",
+    "repository": "panyu97py.github.io",
+    "token": "31b82ce83baeb08d1fd1ac1a16973d50f7547cc4",
     "username": "panyu97py"
   },
   "comment": {
@@ -17,11 +17,12 @@
       "shortname": ""
     },
     "gitalkSetting": {
-      "clientId": "",
-      "clientSecret": "",
-      "owner": "",
-      "repository": ""
+      "clientId": "6cf547ef31b29bd3b69b",
+      "clientSecret": "4cca84f474d0153b60aba5a9e73d09a0617d00c6",
+      "owner": "panyu97py",
+      "proxy": "https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token",
+      "repository": "panyu97py.github.io"
     },
-    "showComment": false
+    "showComment": true
   }
 }
