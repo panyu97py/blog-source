@@ -1,9 +1,9 @@
 {
   "posts": [
     {
-      "content": "```\n'use strict'\nconst merge = require('webpack-merge')\nconst prodEnv = require('./prod.env')\n\nmodule.exports = merge(prodEnv, {\n  NODE_ENV: '\"development\"',\n  API_ENV: `\"${process.env.API_ENV}\"`\n})\n\n```",
+      "content": "### 安装\n```\nyarn add cross-env\nnpm install cross-env --save\n```\n### 相关配置\n#### config/dev.env.js\n```\n'use strict'\nconst merge = require('webpack-merge')\nconst prodEnv = require('./prod.env')\n\nmodule.exports = merge(prodEnv, {\n  NODE_ENV: '\"development\"',\n  API_ENV: `\"${process.env.API_ENV}\"`\n})\n```\n#### config/prod.env.js\n```\n'use strict'\nmodule.exports = {\n  NODE_ENV: '\"production\"',\n  API_ENV: `\"${process.env.API_ENV}\"`\n}\n```\n#### package.json\n```\n{\n    //……\n    \"scripts\":{\n        \"dev\": \"cross-env API_ENV=dev webpack-dev-server --inline --progress --config build/webpack.dev.conf.js\",\n        \"prod\": \"cross-env API_ENV=prod webpack-dev-server --inline --progress --config build/webpack.dev.conf.js\",\n        \"alpha\": \"cross-env API_ENV=alpha webpack-dev-server --inline --progress --config build/webpack.dev.conf.js\",\n        \"start\": \"npm run dev\",\n        \"lint\": \"eslint --fix --ext .js,.vue src\",\n        \"build:dev\": \"cross-env API_ENV=dev node build/build.js\",\n        \"build:prod\": \"cross-env API_ENV=prod node build/build.js\",\n        \"build:alpha\": \"cross-env API_ENV=alpha node build/build.js\",\n        \"build:alpha_analyz\": \"npm_config_report=true npm run build:alpha\"\n    },\n     \"dependencies\": {\n         //……\n        \"cross-env\": \"^5.2.0\",\n         //……\n     }\n     //……\n}\n```\n### 项目中使用\n```\nprocess.env.API_ENV\n```",
       "data": {
-        "title": "VUE CLI3 结合 cross-env 配置环境变量",
+        "title": "VUE CLI2 结合 cross-env 配置环境变量",
         "date": "2021-03-27 18:25:05",
         "tags": [],
         "published": true,
